@@ -5,19 +5,18 @@ import Input from './Input'
 import initState from './initState'
 import TextArea from './TextArea';
 import ContactButton from '../buttons/ContactButton';
-import {ContactData} from '../../interfaces/interfaces'
+import {ContactData, MessageStatus, IsSent, FormInput} from '../../interfaces/interfaces'
 
 import classes from './contact.module.scss'
 
 const Contact = () => {
-    const isComponentLoad = useRef(true);
-    const form = useRef();
-    const [formInput, setFormInput] = useState(initState);
-    const [message, setMessage] = useState<ContactData>();
-    const [messageStatus, setMessageStatus] = useState('send');
-    const [isSent, setIsSent] = useState(false)
+    const isComponentLoad = useRef<boolean>(true);
+    const [formInput, setFormInput] = useState<FormInput>(initState);
+    const [message, setMessage] = useState<ContactData>(undefined);
+    const [messageStatus, setMessageStatus] = useState<MessageStatus>('send');
+    const [isSent, setIsSent] = useState<IsSent>(false)
 
-    const inputValidityHandler = (inputName) => {
+    const inputValidityHandler = (inputName: string) => {
         updateValidity(setFormInput, formInput, inputName, '', false);
     };
 
@@ -41,7 +40,7 @@ const Contact = () => {
         if (!formInput.name.value.trim()) {
             inputValidityHandler('name');
             noEmptyCellsHandler()
-        } else if (!formInput.phone.value.trim()) {
+        } else if (!formInput.phone.value?.trim()) {
             inputValidityHandler('phone');
             noEmptyCellsHandler()
         } else if (!formInput.email.value.trim()) {
@@ -49,6 +48,10 @@ const Contact = () => {
             noEmptyCellsHandler()
         } else if (!formInput.message.value.trim()) {
             inputValidityHandler('message');
+            noEmptyCellsHandler()
+        }
+        else if (formInput.phone.value.length > formInput.phone.maxLength){
+            inputValidityHandler('phone');
             noEmptyCellsHandler()
         }else {
             setMessage(formData);
@@ -87,13 +90,13 @@ const Contact = () => {
     }
 
     return(
-        <form ref={form} className={classes.ContactContainer} onSubmit={onSubmit}>
+        <form className={classes.ContactContainer} onSubmit={onSubmit}>
             <fieldset>
                 <legend>CONTACT ME</legend>
                 <Input 
-                    type='text' 
-                    className={classes.TextInput} 
-                    name='name' 
+                    type='text'
+                    className={classes.TextInput}
+                    name='name'
                     value={formInput.name.value}
                     maxLength={formInput.name.maxLength}
                     invalid={!formInput.name.valid}
@@ -101,8 +104,8 @@ const Contact = () => {
                     setFormInput={setFormInput}
                 />
                 <Input 
-                    type='number' 
-                    className={classes.TextInput} 
+                    type='number'
+                    className={classes.TextInput}
                     name='phone'
                     value={formInput.phone.value}
                     maxLength={formInput.phone.maxLength}
@@ -111,8 +114,8 @@ const Contact = () => {
                     setFormInput={setFormInput}
                 />
                 <Input 
-                    type='email' 
-                    className={classes.TextInput} 
+                    type='email'
+                    className={classes.TextInput}
                     name='email'
                     value={formInput.email.value}
                     maxLength={formInput.email.maxLength}
