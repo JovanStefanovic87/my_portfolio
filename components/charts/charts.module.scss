@@ -1,0 +1,117 @@
+@use '../../styles/variables.module.scss' as v;
+
+@mixin chartResize {
+    @media screen and (min-width: v.$extra_large) {
+        max-height: 70vh !important;
+    }
+    @media screen and (min-width: v.$large) {
+        max-height: 60vh !important;
+    }
+    @media screen and (min-width: v.$small) {
+        max-height: 55vh !important;
+    }
+}
+
+.BarChart {
+    border: 2px solid black;
+    background-color: white;
+    height: 100% !important;
+    max-height: 80vh !important;
+    @include chartResize;
+}
+
+.DoughnutChart {
+    width: 100% !important;
+    @include chartResize;
+}
+
+.ChartContainer {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    overflow: auto;
+}
+
+.Carousel {
+    display: block;
+    cursor: grab;
+    overflow: hidden;
+    background-color: lightblue;
+    margin-top: 3vmin;
+    height: 82%;
+}
+
+.InnerCarousel {
+    display: flex;
+    max-height: 25vh !important;
+}
+
+.Item {
+    position: relative;
+    min-width: calc(100vw - 170px) !important;
+    max-height: 50vh !important;
+    padding: 40px;
+    margin: auto;
+}
+
+.Bar {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.Doughnut {
+    margin: auto;
+    width: 40% !important;
+}
+
+.ChangePreviewButton {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 15px;
+    width: 100%;
+    button {
+        @include v.flexCenter;
+        position: relative;
+        width: 7vw;
+        max-width: 130px;
+        max-height: 40px;
+        font-size: 1rem;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5vw;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        z-index: 1;
+        background-color: #89d8d3;
+        background-image: linear-gradient(315deg, #89b8d8 0%, #03a1c8 74%);
+        &:hover {
+            color: #fff;
+        }
+        &:active {
+            top: 2px;
+        }
+        &:after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            border-radius: 5px;
+            background-color: #4dccc6;
+            background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
+            box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+                7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+            transition: all 0.3s ease;
+        }
+        &:hover:after {
+            top: 0;
+            height: 100%;
+        }
+    }
+}

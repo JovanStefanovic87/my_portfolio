@@ -1,0 +1,327 @@
+@use '../../styles/variables.module.scss' as v;
+
+$yellow: #fff000;
+
+.WaveSpinner {
+  @include v.flexCenter;
+  div {
+    width: 5px;
+    height: 100px;
+    background: linear-gradient(45deg, cyan, #fff);
+    margin: 10px;
+    animation: wave 1s linear infinite;
+    border-radius: 20px;
+    &:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(7) {
+      animation-delay: 0.6s;
+    }
+    &:nth-child(8) {
+      animation-delay: 0.7s;
+    }
+    &:nth-child(9) {
+      animation-delay: 0.8s;
+    }
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+.GlowingSpinner {
+  @include v.absoluteCenter;
+  width: 12vw;
+  height: 12vw;
+  text-align: center;
+  line-height: 12vw;
+  font-family: sans-serif;
+  font-size: 1vw;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px $yellow;
+  border: 3px solid #3c3c3c;
+  border-radius: 50%;
+  color: $yellow;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  background: transparent;
+  &:before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top: 3px solid $yellow;
+    border-right: 3px solid $yellow;
+    border-radius: 50%;
+    animation: animateGlowingLine 2s linear infinite;
+  }
+  span {
+    display: block;
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 50%;
+    width: 50%;
+    height: 4px;
+    transform-origin: left;
+    background: transparent;
+    animation: animateGlowingDot 2s linear infinite;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: $yellow;
+      top: -6px;
+      right: -8px;
+      box-shadow: 0 0 20px $yellow;
+    }
+  }
+}
+
+@keyframes animateGlowingLine {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animateGlowingDot {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
+}
+
+.GradientSpinner {
+  @include v.absoluteCenter;
+  width: 12vw;
+  height: 12vw;
+  border: 4px solid #240229;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.1),
+    5px 5px 10px rgba(0, 0, 0, 0.253),
+    inset -5px -5px 5px rgba(255, 255, 255, 0.2),
+    inset 10px 10px 10px rgba(0, 0, 0, 0.4);
+  &:before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    z-index: 10;
+    background: #282828;
+    border-radius: 50%;
+    border: 2px solid #240229;
+    box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.2),
+      inset 3px 3px 5px rgba(0, 0, 0, 0.5);
+  }
+  span {
+    position: absolute;
+    margin-left: -100px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: linear-gradient(
+      -225deg,
+      v.$gallery_item_prapper_bg_color 0%,
+      #ffffff 50%,
+      #ffffff 100%
+    );
+    filter: blur(20px);
+    z-index: 1;
+    animation: animateGradientSpinner 1s linear infinite;
+  }
+}
+
+@keyframes animateGradientSpinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.SquareSpinner {
+  @include v.absoluteCenter;
+  width: 13vw;
+  animation-name: animateBaseRotation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.82, 0.01, 0.15, 1.01);
+  div {
+    position: relative;
+    float: right;
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    margin: 0.5vw;
+    background: white;
+    animation-name: AnimateSircleRotation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.82, 0.01, 0.15, 1.01);
+    &:before {
+      content: '';
+      position: absolute;
+      background: v.$gallery_item_prapper_bg_color;
+      width: 20px;
+      height: 20px;
+    }
+    &:nth-child(1):before {
+      left: 0;
+      bottom: 0;
+      border-bottom-left-radius: 40px;
+    }
+    &:nth-child(2):before {
+      right: 0;
+      bottom: 0;
+      border-bottom-right-radius: 40px;
+    }
+    &:nth-child(3):before {
+      top: 0;
+      left: 0;
+      border-top-left-radius: 40px;
+    }
+    &:nth-child(4):before {
+      top: 0;
+      right: 0;
+      border-top-right-radius: 40px;
+    }
+  }
+}
+
+@keyframes animateBaseRotation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+@keyframes AnimateSircleRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.BackLightSpinner {
+  position: relative;
+  width: 10vw;
+  height: 10vw;
+  margin-top: -15px;
+  border-radius: 50%;
+  background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
+  animation: animateBackLightSpinner 1.2s linear infinite;
+  &:nth-child(2) {
+    filter: blur(10px);
+  }
+  &:nth-child(3) {
+    filter: blur(25px);
+  }
+  &:nth-child(4) {
+    filter: blur(50px);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: black;
+    border: solid rgba(255, 255, 255, 0.068) 10px;
+    border-radius: 50%;
+  }
+}
+
+@keyframes animateBackLightSpinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animateOpacityBubble {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.11;
+  }
+}
+
+.SpiralSpinner {
+  @include v.flexCenter;
+  div {
+    $circle-count: 60;
+    $circle-diameter: 1em;
+    $ring-radius: 4em;
+    $duration: 3s;
+    position: absolute;
+    width: $circle-diameter;
+    height: $circle-diameter;
+    border-radius: 50%;
+    background: white;
+    opacity: 0;
+    animation: animateToCenter $duration ease-in-out infinite;
+
+    @for $i from 1 through $circle-count {
+      &:nth-child(#{$i}) {
+        $ratio: $i / $circle-count;
+        // Make a ring of circles, and move them to center;
+        transform: rotate($ratio * 720deg) translateX($ring-radius);
+        // Then stagger the animation, and it becomes a spiral.
+        animation-delay: $ratio * $duration;
+      }
+    }
+  }
+}
+
+@keyframes animateToCenter {
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}

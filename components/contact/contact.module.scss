@@ -1,0 +1,122 @@
+@use '../../styles/variables.module.scss' as v;
+
+.ContactContainer {
+    width: 50vw;
+    margin: 100px auto 0 auto;
+    legend {
+        color: white;
+    }
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        height: 60vh;
+    }
+}
+
+.FormInput {
+    width: 100%;
+    max-width: 260px;
+    margin: 10px auto;
+    position: relative;
+    border-bottom: 1px solid rgba(#fff, 0.9);
+    input {
+        display: block;
+        width: 100%;
+        min-height: 35px;
+        border: none;
+        padding: 0 15px;
+        background: transparent;
+        font-weight: 400;
+        font-size: 16px;
+        color: #fff;
+        position: relative;
+        z-index: 2;
+        &:focus {
+            outline: none;
+        }
+    }
+    label {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translate(0, -50%) scale(1);
+        color: #fff;
+        font-weight: 300;
+        font-size: 14px;
+        cursor: auto;
+        letter-spacing: 0.05em;
+    }
+}
+
+.TextArea {
+    border: 1px solod red;
+    margin: 20px 10px 0 10px;
+    color: white;
+    background-color: transparent;
+    &::placeholder {
+        color: white;
+    }
+}
+
+.InvalidInput {
+    border-bottom: 1px solid rgba(rgb(255, 0, 0), 0.9);
+    &:after {
+        content: 'This field is required';
+        position: absolute;
+        font-size: 0.9rem;
+        bottom: -20px;
+        color: red;
+    }
+}
+
+.InvalidTextArea {
+    border: 2px solid red;
+    color: red;
+    &::placeholder {
+        color: red;
+    }
+}
+
+.LabelAnimateIn {
+    animation: label-animate-in 200ms ease-in-out forwards;
+}
+
+@keyframes label-animate-in {
+    from {
+        transform: translate(-10%, -80%) scale(0.8);
+        top: 0;
+        left: 0;
+    }
+
+    to {
+        transform: translate(0, -50%) scale(1);
+        top: 50%;
+        left: 10px;
+    }
+}
+
+.LabelAnimateOut {
+    animation: label-animate-out 200ms ease-in-out forwards;
+}
+
+@keyframes label-animate-out {
+    from {
+        transform: translate(0, -50%) scale(1);
+        top: 50%;
+        left: 10px;
+    }
+    to {
+        transform: translate(-10%, -80%) scale(0.8);
+        top: 0;
+        left: 0;
+    }
+}
+
+.Message {
+    display: block;
+}
+
+.MessageSentNotification {
+    margin: auto;
+    color: limegreen;
+}

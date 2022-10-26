@@ -1,0 +1,264 @@
+@use '../../styles/variables.module.scss' as v;
+
+.Layout {
+    display: flex;
+    width: 100vw !important;
+    height: 100vh;
+    background-color: v.$base_background_color;
+}
+
+.Sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    width: 170px;
+    height: 100vh;
+    overflow: hidden;
+    border-radius: 0 10px 10px 0;
+    z-index: 2;
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+    }
+    &:before {
+        z-index: -2;
+        left: 50%;
+        top: -50%;
+        width: 10%;
+        height: 200%;
+        opacity: 0;
+        background-image: linear-gradient(180deg, white, gray);
+        background-repeat: no-repeat;
+        background-size: 50% 50%, 50% 50%;
+        background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+        animation: rotate 5s linear infinite 4.5s;
+    }
+    &:after {
+        z-index: -1;
+        left: 6px;
+        top: 6px;
+        width: calc(100% - 12px);
+        height: calc(100% - 12px);
+        background: v.$sidebar_bg;
+        border-radius: 5px;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(1turn);
+    }
+}
+
+.AuthorImageContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: v.$img_shadow;
+    scale: 0;
+    overflow: hidden;
+    animation: 1s forwards alternate scaleImgFrame ease-out 4s;
+    background-color: rgb(56, 56, 56);
+    margin: auto;
+    margin-top: 10px;
+    .Img {
+        filter: drop-shadow(0 0 6px #000000);
+        translate: 0 -150px;
+        animation: 1s forwards alternate dropImg
+            cubic-bezier(0.1, 1.5, 0.99, 0.99) 5s;
+    }
+}
+
+@keyframes scaleImgFrame {
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes dropImg {
+    0% {
+        translate: 0 -150px;
+    }
+    30% {
+        translate: 0 0;
+    }
+    50% {
+        translate: 0 -10px;
+    }
+    100% {
+        translate: 0 0;
+    }
+}
+
+.Typewriter {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    p {
+        border-right: 2px solid rgba(255, 255, 255, 0.75);
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-style: italic;
+        white-space: nowrap;
+        overflow: hidden;
+        transform: translateY(-50%);
+        border-right-color: transparent;
+        color: rgb(199, 199, 199);
+        animation: typewriter 1.5s steps(22) 6s normal both,
+            blinkTextCursor 800ms steps(22) 6s infinite normal;
+    }
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 8em;
+    }
+}
+
+@keyframes blinkTextCursor {
+    from {
+        border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+        border-right-color: rgba(255, 255, 255, 0);
+    }
+}
+
+.NavButtonContainer {
+    @include v.flexCenter;
+    flex-direction: column;
+    height: 30vh;
+    div {
+        font-size: 1.5rem;
+        line-height: 1.5;
+        text-align: center;
+        color: rgb(182, 182, 182);
+        cursor: pointer;
+        transform: translateX(-500px);
+        transition: 0.2s;
+        &:hover {
+            scale: 1.1;
+            color: rgb(253, 253, 253);
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            left: 0;
+            margin-top: 1px;
+            border-bottom: v.$sidebar_navbutton_border;
+        }
+        &:last-child::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            left: 0;
+            margin-top: 37px;
+            border-bottom: v.$sidebar_navbutton_border;
+        }
+    }
+}
+
+.NavAnimate {
+    text-shadow: 0 0 10px red;
+    color: white !important;
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        width: 100%;
+        transform: scaleX(0);
+        height: 1px;
+        background-color: rgb(255, 255, 255);
+        animation: 1s navUnderline forwards ease-out;
+        transform-origin: 50%;
+    }
+}
+
+@keyframes navUnderline {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.Home {
+    animation: 1s forwards alternate SlideInRight ease-out 6.5s;
+}
+
+.About {
+    animation: 1s forwards alternate SlideInRight ease-out 7s;
+}
+
+.MySkills {
+    animation: 1s forwards alternate SlideInRight ease-out 7.5s;
+}
+
+.Components {
+    animation: 1s forwards alternate SlideInRight ease-out 8s;
+}
+
+.Charts {
+    animation: 1s forwards alternate SlideInRight ease-out 8.5s;
+}
+
+.Motions {
+    animation: 1s forwards alternate SlideInRight ease-out 9s;
+}
+
+.Contact {
+    animation: 1s forwards alternate SlideInRight ease-out 9.5s;
+}
+
+.SocialImageContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-height: 160px;
+    padding: 10px;
+    * {
+        cursor: pointer;
+        border-radius: 50%;
+        transition: 0.2s ease;
+        animation: 1s backwards alternate SlideUp ease-out 10s;
+        &:hover {
+            box-shadow: v.$img_shadow;
+        }
+    }
+}
+
+@keyframes SlideInRight {
+    from {
+        transform: translateX(-500px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes SlideUp {
+    from {
+        transform: translateY(500px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
