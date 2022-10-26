@@ -23,6 +23,7 @@
         display: block;
         width: 100%;
         min-height: 35px;
+        margin-top: 10px;
         border: none;
         padding: 0 15px;
         background: transparent;
@@ -54,14 +55,14 @@
     color: white;
     background-color: transparent;
     &::placeholder {
-        color: white;
+        color: rgba(255, 255, 255, 0.459);
     }
 }
 
 .InvalidInput {
     border-bottom: 1px solid rgba(rgb(255, 0, 0), 0.9);
     &:after {
-        content: 'This field is required';
+        content: 'This field i required';
         position: absolute;
         font-size: 0.9rem;
         bottom: -20px;

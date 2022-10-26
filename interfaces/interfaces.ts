@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export type MessageStatus = 'send' | 'sending' | 'sent' | 'thanks' | 'noempty' | 'error';
-export type SliderNavParams = {
+export interface SliderNavParams {
     wellcome: {
         zIndex: number,
         animate: {}
@@ -23,21 +23,49 @@ export type SliderNavParams = {
         animate: {}
     },
 }
+export type IsSent = boolean
 
 export type parallaxData = number
   
-export type SetStateVoid = {
+export interface SetStateVoid {
     onClick: Dispatch<SetStateAction<void>>;
 }
 
-export type SetParalaxLayer = {
+export interface SetParalaxLayer {
     setParalaxLayer: Dispatch<SetStateAction<number>>;
 }
 
-export type ContactData = {
+export interface ContactData {
     email: string,
     fullname: string,
     phone: number | undefined,
     message: string,
     subject: 'hello'
+}
+
+export interface FormInput {
+    name: {
+        value: string,
+        touched: boolean,
+        valid: boolean,
+        maxLength: number
+    },
+    phone: {
+        value: any,
+        touched: boolean,
+        valid: boolean,
+        maxLength: number
+    },
+    email: {
+        value: string,
+        touched: boolean,
+        valid: boolean,
+        maxLength: number
+    },
+    message: {
+        value: string,
+        touched: boolean,
+        valid: boolean,
+        maxLength: number,
+    }
 }

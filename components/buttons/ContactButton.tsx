@@ -6,7 +6,7 @@ interface Props {
     messageStatus: MessageStatus;
 }
 
-const ContactButton: React.FC<Props> = ({messageStatus}): JSX.Element => {
+const ContactButton: React.FC<Props> = (props: Props): JSX.Element => {
     const status = {
         send: {
             text: 'Send',
@@ -37,8 +37,8 @@ const ContactButton: React.FC<Props> = ({messageStatus}): JSX.Element => {
 
     return(
         <div className={classes.SubmitButtonContainer}>
-            <button className={[classes.ContactButton, status[messageStatus].className].join(' ')}>
-            {status[messageStatus].text}
+            <button className={[classes.ContactButton, status[props.messageStatus].className].join(' ')}>
+            {status[props.messageStatus].text}
                 <svg width="220px" height="37px" viewBox="0 0 220 37">
                     <polyline points="196,1 195,36 1,37 1,1 195,1"/>
                     <polyline points="195,1 195,36 1,36 1,1 195,1"/>

@@ -6,7 +6,7 @@ const initState = {
         maxLength: 20
     },
     phone: {
-        value: undefined,
+        value: '',
         touched: false,
         valid: true,
         maxLength: 11
