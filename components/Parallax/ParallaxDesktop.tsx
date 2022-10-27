@@ -14,8 +14,7 @@ import ChartsGallery from '../charts/ChartsGallery';
 import MountainImg from '../../assets/img/hill1-01.png'
 import MountainImgMid from '../../assets/img/hill4.png'
 import MountainDistImg from '../../assets/img/hillDistant.png'
-import anifish from './../../assets/img/anifish.gif'
-
+import anifish1 from './../../assets/img/anifish1.gif'
 import classes from './parallax.module.scss'
 import CamuText from './CamuText';
 import Water from './Water';
@@ -32,7 +31,7 @@ interface Props {
 }
 
 const ParallaxDesktop: React.FC<Props> = ({setParalaxLayer, sideBarScrollPosition}) : JSX.Element => {
-    const parallax = useRef(null)
+    const parallax = useRef<any>(null)
     const buttonStartOffset = (n: number) => n - 0.05
     const buttonStartOffsetTop = (n: number) => n - 0.95
     const rotateButton = {
@@ -103,8 +102,6 @@ const ParallaxDesktop: React.FC<Props> = ({setParalaxLayer, sideBarScrollPositio
                     <ParallaxLayer offset={1} factor={1} sticky={{ start: 1, end: 2 }} className={classes.flexBox}>
                         <Lake wrapper={classes.MountainBottom}
                             layout='responsive'/>
-                        {/* <About />
-                        <CamuText /> */}
                     </ParallaxLayer>
                     <ParallaxLayer offset={2} sticky={{ start: buttonStartOffsetTop(2), end: 1 }} className={classes.flexBoxButton} style={rotateButton}>
                         <ParallaxButton onClick={() => setParalaxLayer(0)}/>
@@ -116,7 +113,7 @@ const ParallaxDesktop: React.FC<Props> = ({setParalaxLayer, sideBarScrollPositio
                     {/* 2 */}
                     <ParallaxLayer offset={2} factor={1} sticky={{ start: 2, end: 2 }} className={[classes.flexBoxTop, classes.FishLayer].join(' ')} style={{ zIndex: 1}}>
                         <div className={classes.AnimateFish}>
-                            <Image   src={anifish} alt='fish' width='464px' height='170px' layout='intrinsic'/>
+                            <Image   src={anifish1} alt='fish' width='464px' height='170px' layout='intrinsic'/>
                         </div>
                         
                     </ParallaxLayer>

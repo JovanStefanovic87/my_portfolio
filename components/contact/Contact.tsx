@@ -16,8 +16,8 @@ const Contact = () => {
     const [messageStatus, setMessageStatus] = useState<MessageStatus>('send');
     const [isSent, setIsSent] = useState<IsSent>(false)
 
-    const inputValidityHandler = (inputName: string) => {
-        updateValidity(setFormInput, formInput, inputName, '', false);
+    const inputValidityHandler = (inputName: string, error: string) => {
+        updateValidity(setFormInput, formInput, inputName, '', false, error);
     };
 
     useEffect(() => {
@@ -38,20 +38,19 @@ const Contact = () => {
             subject: 'hello',
         };
         if (!formInput.name.value.trim()) {
-            inputValidityHandler('name');
+            inputValidityHandler('name', 'Name is required');
             noEmptyCellsHandler()
         } else if (!formInput.phone.value?.trim()) {
-            inputValidityHandler('phone');
+            inputValidityHandler('phone', 'Phone number is required');
+            noEmptyCellsHandler()
+        }else if (formInput.phone.value.length > formInput.phone.maxLength){
+            inputValidityHandler('phone', 'Insert correct phone number');
             noEmptyCellsHandler()
         } else if (!formInput.email.value.trim()) {
-            inputValidityHandler('email');
+            inputValidityHandler('email', 'E-mail is required');
             noEmptyCellsHandler()
         } else if (!formInput.message.value.trim()) {
-            inputValidityHandler('message');
-            noEmptyCellsHandler()
-        }
-        else if (formInput.phone.value.length > formInput.phone.maxLength){
-            inputValidityHandler('phone');
+            inputValidityHandler('message', 'Some message is required');
             noEmptyCellsHandler()
         }else {
             setMessage(formData);
@@ -102,6 +101,8 @@ const Contact = () => {
                     invalid={!formInput.name.valid}
                     formInput={formInput}
                     setFormInput={setFormInput}
+                    setIsSent={isSent}
+                    isSent={isSent}
                 />
                 <Input 
                     type='number'
@@ -112,6 +113,8 @@ const Contact = () => {
                     invalid={!formInput.phone.valid}
                     formInput={formInput}
                     setFormInput={setFormInput}
+                    setIsSent={isSent}
+                    isSent={isSent}
                 />
                 <Input 
                     type='email'
@@ -122,6 +125,8 @@ const Contact = () => {
                     invalid={!formInput.email.valid}
                     formInput={formInput}
                     setFormInput={setFormInput}
+                    isSent={isSent}
+                    setIsSent={isSent}
                 />
                 <TextArea 
                     name='message'

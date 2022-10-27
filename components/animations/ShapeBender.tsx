@@ -1,12 +1,13 @@
+import {ShapeBenderTransition} from '../../interfaces/interfaces'
 import { useState } from "react";
 import { motion, MotionConfig } from "framer-motion";
 
 import classes from './animation.module.scss'
 
-const ShapeBender = () :JSX.Element => {
-    const [isHover, setIsHover] = useState(false);
+const ShapeBender = () : JSX.Element => {
+    const [isHover, setIsHover] = useState<boolean>(false);
 
-    const shapeBenderTransition={
+    const shapeBenderTransition = {
         duration: 2,
         ease: "easeInOut",
         times: [0, 0.2, 0.5, 0.8, 1],
@@ -16,7 +17,7 @@ const ShapeBender = () :JSX.Element => {
       }
 
     return(
-        <MotionConfig transition={shapeBenderTransition}>
+        <MotionConfig transition={shapeBenderTransition as ShapeBenderTransition}>
         <motion.div
       className={classes.MotionSquare}
       animate={isHover ? "hover" : "rest"}

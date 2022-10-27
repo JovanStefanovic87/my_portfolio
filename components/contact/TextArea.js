@@ -4,7 +4,7 @@ import {inputChangedHandler} from '../../helpers/universalFunctions'
 
 import classes from './contact.module.scss';
 
-const TextArea = props => {
+const TextArea = (props) => {
     const [placeholder, setPlaceholder] = useState('YOUR MESSAGE HERE')
     const inputClasses = {
         valid: classes.TextArea,

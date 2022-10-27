@@ -8,7 +8,7 @@ import BackLightSpinner from '../spinners/BackLightSpinner'
 import SpiralSpinner from '../spinners/SpiralSpinner'
 
 
-const SpinnersGallery = () :JSX.Element => {
+const SpinnersGallery = () : JSX.Element => {
     return (
         <GalleryWrapper>
             <GalleryItemWrapper>

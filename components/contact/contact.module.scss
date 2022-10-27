@@ -47,6 +47,16 @@
         cursor: auto;
         letter-spacing: 0.05em;
     }
+    span{
+        color: red;
+        position: absolute;
+        margin-top: 5px;
+        font-size: 0.8rem;
+    }
+}
+
+.Error{
+    color: red
 }
 
 .TextArea {
@@ -61,13 +71,6 @@
 
 .InvalidInput {
     border-bottom: 1px solid rgba(rgb(255, 0, 0), 0.9);
-    &:after {
-        content: 'This field i required';
-        position: absolute;
-        font-size: 0.9rem;
-        bottom: -20px;
-        color: red;
-    }
 }
 
 .InvalidTextArea {

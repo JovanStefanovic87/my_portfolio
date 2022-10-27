@@ -18,7 +18,7 @@ const ButtonsGallery = (): JSX.Element => {
                 <LoadingButton />
             </GalleryItemWrapper>
             <GalleryItemWrapper>
-                <SumbitButton demo={true}/>
+                <SumbitButton/>
             </GalleryItemWrapper>
             <GalleryItemWrapper>
                 <GlowingButton />

@@ -111,12 +111,6 @@
     font-size: 15vmin !important;
 }
 
-.Space {
-    background: url('../../assets/img/space.jpg');
-    background-size: cover !important;
-    background-position: center;
-}
-
 .StarAnimation {
     animation: 4s slideUpStars forwards;
 }
@@ -287,24 +281,6 @@
     background-image: url('../../assets/img/fog1.png');
     background-repeat: no-repeat;
     background-size: cover !important;
-}
-
-.Waves {
-    display: block;
-    position: absolute;
-    background-color: transparent;
-    background-image: url('../../assets/img/water.png');
-    background-position: center top;
-    background-size: contain;
-    background-repeat: repeat-x;
-    z-index: 120;
-    width: 200%;
-    top: 0;
-    height: 182px;
-    animation: 2s waves infinite linear;
-    @media screen and (max-width: v.$small) {
-        animation: 2s waves infinite linear alternate;
-    }
 }
 
 @keyframes waves {
