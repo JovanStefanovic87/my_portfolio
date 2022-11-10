@@ -2,13 +2,13 @@ import {useState} from 'react'
 
 import classes from './buttons.module.scss'
 
-const SumbitButton = (props) => {
+const SumbitButton = () => {
     const [style, setStyle] = useState('')
 
     const onClick = () => {
         setStyle(classes.SubmitButtonOnClick)
         setTimeout(() => {
-            props.demo ? validate() : {}
+            validate()
           }, 250);
     }
 
