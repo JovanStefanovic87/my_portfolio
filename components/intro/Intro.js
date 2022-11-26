@@ -4,7 +4,7 @@ import {skills} from './skills'
 
 import classes from './intro.module.scss'
 
-const Intro = (props) => {
+const Intro = () => {
     const [animate, setAnimate] = useState('')
     const isComponentLoad = useRef(true);
     const ref = useRef(null)

@@ -1,10 +1,10 @@
 @use '../../styles/variables.module.scss' as v;
 
 @mixin afterBefore {
-    content: '';
-    position: absolute;
-    border-radius: 10px;
-    z-index: -1;
+  content: '';
+  position: absolute;
+  border-radius: 10px;
+  z-index: -1;
 }
 
 $flipping_speed: 0.5s;
@@ -15,461 +15,519 @@ $red: #e1332d;
 $green: #1ecd97;
 $gray: #bbbbbb;
 $glow_gradient: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
+  45deg,
+  #ff0000,
+  #ff7300,
+  #fffb00,
+  #48ff00,
+  #00ffd5,
+  #002bff,
+  #7a00ff,
+  #ff00c8,
+  #ff0000
 );
 
 .GlowOnHover {
-    width: $button_width;
-    height: $button_height;
-    border: none;
-    outline: none;
-    color: #fff;
+  width: $button_width;
+  height: $button_height;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  &:before,
+  &:after {
+    @include afterBefore;
+  }
+  &:before {
+    background: $glow_gradient;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  &:active {
+    color: #000;
+  }
+  &:active:after {
+    background: transparent;
+  }
+  &:hover:before {
+    opacity: 1;
+  }
+  &:after {
+    width: 100%;
+    height: 100%;
     background: #111;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-    &:before,
-    &:after {
-        @include afterBefore;
-    }
-    &:before {
-        background: $glow_gradient;
-        top: -2px;
-        left: -2px;
-        background-size: 400%;
-        filter: blur(5px);
-        width: calc(100% + 4px);
-        height: calc(100% + 4px);
-        animation: glowing 20s linear infinite;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-    &:active {
-        color: #000;
-    }
-    &:active:after {
-        background: transparent;
-    }
-    &:hover:before {
-        opacity: 1;
-    }
-    &:after {
-        width: 100%;
-        height: 100%;
-        background: #111;
-        left: 0;
-        top: 0;
-    }
+    left: 0;
+    top: 0;
+  }
 }
 
 @keyframes glowing {
-    0% {
-        background-position: 0 0;
-    }
-    50% {
-        background-position: 400% 0;
-    }
-    100% {
-        background-position: 0 0;
-    }
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
 
 .MechanicalButton {
+  position: relative;
+  display: inline-block;
+  width: calc($button_width);
+  height: calc($button_height + 5px);
+  margin: 20px;
+  a {
+    display: block;
     position: relative;
-    display: inline-block;
-    width: calc($button_width);
+    width: $button_width;
     height: calc($button_height + 5px);
-    margin: 20px;
-    a {
-        display: block;
-        position: relative;
-        width: $button_width;
-        height: calc($button_height + 5px);
-        line-height: calc($button_height + 5px);
-        color: #ffffffb4;
-        font-weight: bold;
-        font-size: 36px;
-        text-align: center;
-        background-color: #8b8b8b;
-        text-shadow: 0px 1px 0px #000;
-        box-shadow: inset 0 1px 0 #ff787880, 0 10px 0 #ff787880;
-        border-radius: 5px;
-        transition: color 0.4s, background-color 0.1s, transform 0.3s,
-            box-shadow 0.1s ease-in-out;
-        &:hover {
-            color: #ff787880;
-        }
-        &:active {
-            transform: translateY(10px);
-            color: #fdfdfd;
-            background-color: #ff787880;
-            box-shadow: inset 0 1px 0 #ff787800, 0 10px 0 #ff787800;
-        }
+    line-height: calc($button_height + 5px);
+    color: #ffffffb4;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    background-color: #8b8b8b;
+    text-shadow: 0px 1px 0px #000;
+    box-shadow: inset 0 1px 0 #ff787880, 0 10px 0 #ff787880;
+    border-radius: 5px;
+    transition: color 0.4s, background-color 0.1s, transform 0.3s, box-shadow 0.1s ease-in-out;
+    &:hover {
+      color: #ff787880;
     }
-    &:before {
-        content: '';
-        height: 100%;
-        width: 100%;
-        padding: 4px;
-        position: absolute;
-        bottom: -15px;
-        left: -4px;
-        background-color: #000000;
-        border-radius: 5px;
+    &:active {
+      transform: translateY(10px);
+      color: #fdfdfd;
+      background-color: #ff787880;
+      box-shadow: inset 0 1px 0 #ff787800, 0 10px 0 #ff787800;
     }
+  }
+  &:before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    padding: 4px;
+    position: absolute;
+    bottom: -15px;
+    left: -4px;
+    background-color: #000000;
+    border-radius: 5px;
+  }
 }
 
 .FlipingButton {
-    display: inline-block;
-    position: relative;
-    width: $button_width;
-    height: $button_height;
-    color: #fff;
-    font-size: 1.5em;
-    line-height: $button_height;
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Open Sans';
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 1;
-    outline: 0;
-    &:hover {
-        &:after {
-            opacity: 1;
-            transform: translateY(0) rotateX(0);
-        }
+  display: inline-block;
+  position: relative;
+  width: $button_width;
+  height: $button_height;
+  color: #fff;
+  font-size: 1.5em;
+  line-height: $button_height;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Open Sans';
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 1;
+  outline: 0;
+  &:hover {
+    &:after {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
 
-        &:before {
-            opacity: 0;
-            transform: translateY(50%) rotateX(90deg);
-        }
-    }
-    &:active {
-        &:after {
-            scale: 0.98;
-            box-shadow: 0px 0px 0px 5px black;
-        }
-    }
-    &:before,
-    &:after {
-        display: block;
-        top: 0;
-        left: 0;
-        transition: $flipping_speed;
-    }
     &:before {
-        position: relative;
-        opacity: 1;
-        color: #e6e6e6;
-        padding: 0 30px;
-        line-height: $button_height;
-        background: #070707;
-        content: 'FRONT';
-        transform: translateY(0) rotateX(0);
+      opacity: 0;
+      transform: translateY(50%) rotateX(90deg);
     }
+  }
+  &:active {
     &:after {
-        position: absolute;
-        opacity: 0;
-        width: 100%;
-        color: #252525;
-        background: #ffffff;
-        content: 'BACK';
-        transform: translateY(-50%) rotateX(90deg);
+      scale: 0.98;
+      box-shadow: 0px 0px 0px 5px black;
     }
+  }
+  &:before,
+  &:after {
+    display: block;
+    top: 0;
+    left: 0;
+    transition: $flipping_speed;
+  }
+  &:before {
+    position: relative;
+    opacity: 1;
+    color: #e6e6e6;
+    padding: 0 30px;
+    line-height: $button_height;
+    background: #070707;
+    content: 'FRONT';
+    transform: translateY(0) rotateX(0);
+  }
+  &:after {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    color: #252525;
+    background: #ffffff;
+    content: 'BACK';
+    transform: translateY(-50%) rotateX(90deg);
+  }
 }
 
 .LoadingButton {
-    a {
-        display: block;
-        position: relative;
-        width: $button_width;
-        height: $button_height;
-        line-height: $button_height;
-        font-size: 18px;
-        font-family: sans-serif;
-        text-decoration: none;
-        letter-spacing: 2px;
-        text-align: center;
-        color: rgb(214, 214, 214);
-        border: 2px solid rgb(216, 216, 216);
-        transition: all 0.35s;
-        &:after {
-            position: absolute;
-            content: '';
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: #ff003b;
-            transition: all 0.35s;
-        }
-        &:hover {
-            color: #fff;
-        }
-        &:hover:after {
-            width: 100%;
-        }
-        span {
-            position: relative;
-            z-index: 2;
-        }
+  a {
+    display: block;
+    position: relative;
+    width: $button_width;
+    height: $button_height;
+    line-height: $button_height;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-align: center;
+    color: rgb(214, 214, 214);
+    border: 2px solid rgb(216, 216, 216);
+    transition: all 0.35s;
+    &:after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: #ff003b;
+      transition: all 0.35s;
     }
+    &:hover {
+      color: #fff;
+    }
+    &:hover:after {
+      width: 100%;
+    }
+    span {
+      position: relative;
+      z-index: 2;
+    }
+  }
 }
 
 .SubmitButton {
-    outline: none;
-    width: $button_width;
-    height: $button_height;
-    text-align: center;
-    border-radius: 40px;
-    background: #fff;
-    border: 2px solid $green;
-    color: $green;
-    letter-spacing: 1px;
-    text-shadow: 0;
-    font-size: 1.5em;
-    font-weight: bold;
-    transition: all 0.25s ease;
-    &:hover {
-        color: white;
-        background: $green;
-    }
-    &:active {
-        letter-spacing: 2px;
-    }
-    &:after {
-        content: 'SUBMIT';
-    }
+  outline: none;
+  width: $button_width;
+  height: $button_height;
+  text-align: center;
+  border-radius: 40px;
+  background: #fff;
+  border: 2px solid $green;
+  color: $green;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  transition: all 0.25s ease;
+  &:hover {
+    color: white;
+    background: $green;
+  }
+  &:active {
+    letter-spacing: 2px;
+  }
+  &:after {
+    content: 'SUBMIT';
+  }
 }
 
 .SubmitButtonOnClick {
-    width: 120px;
-    height: 120px;
-    border-color: $gray;
-    border-width: 7px;
-    font-size: 0;
-    border-left-color: $green;
-    border-radius: 50%;
-    animation: rotating 2s 0.25s linear infinite;
+  width: 120px;
+  height: 120px;
+  border-color: $gray;
+  border-width: 7px;
+  font-size: 0;
+  border-left-color: $green;
+  border-radius: 50%;
+  animation: rotating 2s 0.25s linear infinite;
 
-    &:after {
-        content: '';
-    }
-    &:hover {
-        color: $green;
-        background: white;
-    }
+  &:after {
+    content: '';
+  }
+  &:hover {
+    color: $green;
+    background: white;
+  }
 }
 
 @keyframes rotating {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .SubmitButtonValidate {
-    @include v.flexCenter;
-    font-size: 2.5em;
-    color: white;
-    background: $green;
-    &:after {
-        content: '✓';
-    }
+  @include v.flexCenter;
+  font-size: 2.5em;
+  color: white;
+  background: $green;
+  &:after {
+    content: '✓';
+  }
 }
 
 .NextSlide {
-    padding: 0.6em 2em;
-    border: none;
-    outline: none;
-    color: rgb(255, 255, 255);
-    background: #111;
-    font-size: 5vmin;
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 99999999999;
-    border-radius: 10px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    &:before,
-    &:after {
-        @include afterBefore;
-    }
-    &:before {
-        background: $glow_gradient;
-        top: -2px;
-        left: -2px;
-        background-size: 400%;
-        filter: blur(5px);
-        -webkit-filter: blur(5px);
-        width: calc(100% + 4px);
-        height: calc(100% + 4px);
-        animation: glowing-button 20s linear infinite;
-        transition: opacity 0.3s ease-in-out;
-    }
-    &:after {
-        width: 100%;
-        height: 100%;
-        background: #222;
-        left: 0;
-        top: 0;
-    }
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  font-size: 5vmin;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999999999;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  &:before,
+  &:after {
+    @include afterBefore;
+  }
+  &:before {
+    background: $glow_gradient;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+  }
+  &:after {
+    width: 100%;
+    height: 100%;
+    background: #222;
+    left: 0;
+    top: 0;
+  }
 }
 
 @keyframes glowing-button {
-    0% {
-        background-position: 0 0;
-    }
-    50% {
-        background-position: 400% 0;
-    }
-    100% {
-        background-position: 0 0;
-    }
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
 
 .ParallaxButton {
+  position: absolute;
+  width: 2.5vw;
+  height: 2.5vw;
+  border: 1px solid #ffffff;
+  border-radius: 100%;
+  transition: transform 0.1s;
+  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.555);
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  &:before {
     position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    content: '';
     width: 2.5vw;
     height: 2.5vw;
-    border: 1px solid #ffffff;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
     border-radius: 100%;
-    transition: transform 0.1s;
-    opacity: 0.5;
-    background-color: rgba(0, 0, 0, 0.555);
-    cursor: pointer;
-    &:hover {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-    &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        content: '';
-        width: 2.5vw;
-        height: 2.5vw;
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
-        border-radius: 100%;
-        opacity: 0;
-        animation: sdb03 3s infinite ease-in-out;
-    }
-    &:after {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        content: '';
-        width: 16px;
-        height: 16px;
-        margin: -12px 0 0 -8px;
-        border-left: 1px solid #ffffff;
-        border-bottom: 1px solid #ffffff;
-        transform: rotate(-45deg);
-    }
-    @media screen and (max-width: v.$large) {
-        border: none;
-    }
+    opacity: 0;
+    animation: sdb03 3s infinite ease-in-out;
+  }
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin: -12px 0 0 -8px;
+    border-left: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    transform: rotate(-45deg);
+  }
+  @media screen and (max-width: v.$large) {
+    border: none;
+  }
 }
 
 @keyframes sdb03 {
-    0% {
-        opacity: 1;
-    }
-    30% {
-        opacity: 1;
-    }
-    60% {
-        box-shadow: 0 0 20px -1px rgba(255, 255, 255, 1);
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 20px -1px rgba(255, 255, 255, 1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .SubmitButtonContainer {
-    @include v.flexCenter;
-    height: 150px;
+  @include v.flexCenter;
+  height: 150px;
 }
 
 .ContactButton {
-    box-sizing: border-box;
-    position: relative;
-    width: 15rem;
-    min-width: 140px;
-    max-width: 200px;
-    padding: 3px 5px;
-    color: rgb(0, 0, 0);
-    font-size: 1.5rem;
-    background-image: linear-gradient(rgb(191, 226, 255), rgb(0, 103, 187));
-    text-shadow: 0px -1px #333;
-    span {
-        color: white;
-        font-size: 18px;
-        font-weight: 100;
-    }
-    &:hover {
-        background: linear-gradient(rgb(216, 237, 255), rgb(0, 136, 255));
-    }
-    &:active {
-        scale: 0.95;
-    }
-    &:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        box-shadow: 0 0 7px -1px rgb(0, 145, 255), 0 0 10px -1px white,
-            0 0 5px rgb(111, 152, 187) inset;
-        opacity: 1;
-        transition: opacity 0.3s ease;
-    }
-    &:after {
-        content: '';
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        width: 100%;
-        height: 50%;
-        background: linear-gradient(
-            rgba(255, 255, 255, 0.8),
-            rgba(255, 255, 255, 0.1)
-        );
-    }
-    &:after:hover {
-        background: linear-gradient(
-            rgba(255, 255, 255, 0.1),
-            rgba(255, 255, 255, 0.8)
-        );
-    }
-    &:hover:before {
-        opacity: 0.7;
-    }
-    &:active:before {
-        scale: 0.95;
-        opacity: 1;
-    }
-    svg {
+  box-sizing: border-box;
+  position: relative;
+  width: 15rem;
+  min-width: 140px;
+  max-width: 200px;
+  padding: 3px 5px;
+  color: rgb(0, 0, 0);
+  font-size: 1.5rem;
+  background-image: linear-gradient(rgb(191, 226, 255), rgb(0, 103, 187));
+  text-shadow: 0px -1px #333;
+  span {
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+  }
+  &:hover {
+    background: linear-gradient(rgb(216, 237, 255), rgb(0, 136, 255));
+  }
+  &:active {
+    scale: 0.95;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 7px -1px rgb(0, 145, 255), 0 0 10px -1px white, 0 0 5px rgb(111, 152, 187) inset;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
+  }
+  &:after:hover {
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.8));
+  }
+  &:hover:before {
+    opacity: 0.7;
+  }
+  &:active:before {
+    scale: 0.95;
+    opacity: 1;
+  }
+  svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    fill: none;
+    stroke: #fff;
+    stroke-dasharray: 150 480;
+    stroke-dashoffset: 150;
+    transition: 1s ease-in-out;
+  }
+  &:hover svg {
+    stroke-dashoffset: -480;
+  }
+}
+
+.Sending {
+  text-align: left;
+  &:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    animation: ellipsis steps(12, end) 2s infinite;
+    content: '\2026'; /* ascii code, module not required */
+    width: 0px;
+  }
+}
+
+.NoEmpty {
+  color: rgb(211, 0, 0);
+}
+
+@keyframes ellipsis {
+  to {
+    width: 3rem;
+  }
+}
+
+.PolylineButton {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    width: 180px;
+    height: 60px;
+    position: absolute;
+    button {
+      width: 180px;
+      height: 60px;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid #91c9ff;
+      outline: none;
+      transition: 1s ease-in-out;
+      &:hover {
+        transition: 1s ease-in-out;
+        background: #4f95da;
+      }
+      &:hover svg {
+        stroke-dashoffset: -480;
+      }
+      svg {
         position: absolute;
         left: 0;
         top: 0;
@@ -478,78 +536,12 @@ $glow_gradient: linear-gradient(
         stroke-dasharray: 150 480;
         stroke-dashoffset: 150;
         transition: 1s ease-in-out;
+      }
+      span {
+        color: white;
+        font-size: 18px;
+        font-weight: 100;
+      }
     }
-    &:hover svg {
-        stroke-dashoffset: -480;
-    }
-}
-
-.Sending {
-    text-align: left;
-    &:after {
-        overflow: hidden;
-        display: inline-block;
-        vertical-align: bottom;
-        animation: ellipsis steps(12, end) 2s infinite;
-        content: '\2026'; /* ascii code, module not required */
-        width: 0px;
-    }
-}
-
-.NoEmpty {
-    color: rgb(211, 0, 0);
-}
-
-@keyframes ellipsis {
-    to {
-        width: 3rem;
-    }
-}
-
-.PolylineButton {
-    width: 400px;
-    height: 400px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    div {
-        width: 180px;
-        height: 60px;
-        position: absolute;
-        button {
-            width: 180px;
-            height: 60px;
-            cursor: pointer;
-            background: transparent;
-            border: 1px solid #91c9ff;
-            outline: none;
-            transition: 1s ease-in-out;
-            &:hover {
-                transition: 1s ease-in-out;
-                background: #4f95da;
-            }
-            &:hover svg {
-                stroke-dashoffset: -480;
-            }
-            svg {
-                position: absolute;
-                left: 0;
-                top: 0;
-                fill: none;
-                stroke: #fff;
-                stroke-dasharray: 150 480;
-                stroke-dashoffset: 150;
-                transition: 1s ease-in-out;
-            }
-            span {
-                color: white;
-                font-size: 18px;
-                font-weight: 100;
-            }
-        }
-    }
+  }
 }

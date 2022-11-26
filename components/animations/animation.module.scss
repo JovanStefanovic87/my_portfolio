@@ -6,293 +6,291 @@ $blue: #61dafb;
 $grid_bg_color: #beab812a;
 
 .GalleryWrapper {
+  @include v.flexCenter;
+  height: calc(100vh - 140px);
+  width: 100%;
+  margin-top: 80px;
+  border: 2px solid transparent;
+  border-right: none;
+  border-left: none;
+  .GalleryContainer {
     @include v.flexCenter;
-    height: calc(100vh - 140px);
+    flex-wrap: wrap;
+    gap: 2rem;
+    position: relative;
     width: 100%;
-    margin-top: 80px;
-    border: 2px solid transparent;
-    border-right: none;
-    border-left: none;
-    .GalleryContainer {
+    height: 80vh;
+    padding: 10px;
+    transform: translateX(-99.9%);
+    .Frame {
+      display: inline-block;
+      position: relative;
+      width: 25vw;
+      height: 50vh;
+      min-width: 280px;
+      max-width: 600px;
+      min-height: 240px;
+      max-height: 340px;
+      overflow: hidden;
+      border-radius: 7px;
+      box-shadow: 0 0 8px 1px lighten(v.$gallery_item_prapper_bg_color, 20%);
+      transition: 0.3s;
+      &:hover {
+        box-shadow: 0 0 8px -3px lighten(v.$gallery_item_prapper_bg_color, 20%);
+      }
+      .ButtonContainer {
         @include v.flexCenter;
-        flex-wrap: wrap;
-        gap: 2rem;
-        position: relative;
         width: 100%;
-        height: 80vh;
-        padding: 10px;
-        transform: translateX(-99.9%);
-        .Frame {
-            display: inline-block;
-            position: relative;
-            width: 25vw;
-            height: 50vh;
-            min-width: 280px;
-            max-width: 600px;
-            min-height: 240px;
-            max-height: 340px;
-            overflow: hidden;
-            border-radius: 7px;
-            box-shadow: 0 0 8px 1px
-                lighten(v.$gallery_item_prapper_bg_color, 20%);
-            transition: 0.3s;
-            &:hover {
-                box-shadow: 0 0 8px -3px lighten(v.$gallery_item_prapper_bg_color, 20%);
-            }
-            .ButtonContainer {
-                @include v.flexCenter;
-                width: 100%;
-                height: 50vh;
-                min-height: 240px;
-                max-height: 340px;
-                background-color: v.$gallery_item_prapper_bg_color !important;
-            }
-        }
-        .AnimationFrame {
-            display: inline-block;
-            position: relative;
-            width: 15vw;
-            height: 15vw;
-            overflow: hidden;
-            border-radius: 7px;
-            box-shadow: 0 0 8px 1px
-                lighten(v.$gallery_item_prapper_bg_color, 20%);
-            transition: 0.3s;
-        }
-        .AnimationContainer {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        .ChartFrame {
-            display: flex;
-            justify-content: center;
-        }
+        height: 50vh;
+        min-height: 240px;
+        max-height: 340px;
+        background-color: v.$gallery_item_prapper_bg_color !important;
+      }
     }
+    .AnimationFrame {
+      display: inline-block;
+      position: relative;
+      width: 15vw;
+      height: 15vw;
+      overflow: hidden;
+      border-radius: 7px;
+      box-shadow: 0 0 8px 1px lighten(v.$gallery_item_prapper_bg_color, 20%);
+      transition: 0.3s;
+    }
+    .AnimationContainer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .ChartFrame {
+      display: flex;
+      justify-content: center;
+    }
+  }
 }
 
 @media screen and (max-height: 900px) {
-    .GalleryWrapper {
-        margin-top: 70px;
-        height: calc(100vh - 120px);
-        .GalleryContainer {
-            height: 80vh;
-            overflow: hidden;
-            padding: 10px;
-            transform: translateX(-99.9%);
-            .Frame {
-                height: 25vh;
-                min-width: 280px;
-                min-height: 220px;
-                margin: auto;
-                .ButtonContainer {
-                    @include v.flexCenter;
-                    width: 100%;
-                    height: 100%;
-                    min-height: 240px;
-                    max-height: 340px;
-                    background-color: v.$gallery_item_prapper_bg_color;
-                }
-            }
+  .GalleryWrapper {
+    margin-top: 70px;
+    height: calc(100vh - 120px);
+    .GalleryContainer {
+      height: 80vh;
+      overflow: hidden;
+      padding: 10px;
+      transform: translateX(-99.9%);
+      .Frame {
+        height: 25vh;
+        min-width: 280px;
+        min-height: 220px;
+        margin: auto;
+        .ButtonContainer {
+          @include v.flexCenter;
+          width: 100%;
+          height: 100%;
+          min-height: 240px;
+          max-height: 340px;
+          background-color: v.$gallery_item_prapper_bg_color;
         }
+      }
     }
+  }
 }
 
 .a {
-    animation: 1s a ease-in-out forwards 0.5s;
+  animation: 1s a ease-in-out forwards 0.5s;
 }
 
 @keyframes a {
-    from {
-        transform: translateX(-99.9%);
-    }
-    to {
-        transform: translateX(0);
-    }
+  from {
+    transform: translateX(-99.9%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .b {
-    animation: 1s b ease-in-out forwards 0.5s;
+  animation: 1s b ease-in-out forwards 0.5s;
 }
 
 @keyframes b {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(99.9%);
-    }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(99.9%);
+  }
 }
 
 .GridContainer {
-    display: grid;
-    position: relative;
-    grid-template-columns: auto auto auto;
-    background-color: #0e1b25;
-    width: 100%;
-    height: 80vh;
-    margin-top: 20vh;
-    padding: 10px;
-    gap: 10px 10px;
-    div {
-        display: flex;
-        width: 25vw;
+  display: grid;
+  position: relative;
+  grid-template-columns: auto auto auto;
+  background-color: #0e1b25;
+  width: 100%;
+  height: 80vh;
+  margin-top: 20vh;
+  padding: 10px;
+  gap: 10px 10px;
+  div {
+    display: flex;
+    width: 25vw;
+  }
+  .Item {
+    border-radius: 7px;
+    box-shadow: 0 0 6px #3fffff;
+    background-color: $grid_bg_color;
+    transition: 0.3s;
+    &:hover {
+      box-shadow: 0 0 10px #030303;
     }
-    .Item {
-        border-radius: 7px;
-        box-shadow: 0 0 6px #3fffff;
-        background-color: $grid_bg_color;
-        transition: 0.3s;
-        &:hover {
-            box-shadow: 0 0 10px #030303;
-        }
-    }
+  }
 }
 
 .ShapeBenderContainer {
-    width: 100px;
-    height: 100px;
-    cursor: pointer;
-    background-color: white;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  background-color: white;
 }
 
 .Button {
-    appearance: none;
-    border: none;
-    cursor: pointer;
-    background-color: #acc7ed;
-    color: #fff;
-    border-radius: 60px;
-    outline: none;
-    margin: 0;
-    padding: 12px 25px;
-    font-family: 'Poppins';
-    font-size: 48px;
-    font-weight: 600;
-    line-height: 48px;
-    letter-spacing: -1px;
-    position: relative;
-    text-align: center;
-    display: flex;
-    align-items: center;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  background-color: #acc7ed;
+  color: #fff;
+  border-radius: 60px;
+  outline: none;
+  margin: 0;
+  padding: 12px 25px;
+  font-family: 'Poppins';
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 48px;
+  letter-spacing: -1px;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .default {
-    display: block;
+  display: block;
 }
 
 .number {
-    padding: 20px 0;
-    width: 88px;
-    position: relative;
-    transform: translateZ(0);
+  padding: 20px 0;
+  width: 88px;
+  position: relative;
+  transform: translateZ(0);
 }
 
 .number {
-    &:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 1px;
-        bottom: 1px;
-        width: 1px;
-        background-color: #35373f;
-    }
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    bottom: 1px;
+    width: 1px;
+    background-color: #35373f;
+  }
 }
 
 .current {
-    color: #8a8d9b;
-    opacity: 1;
-    display: block;
+  color: #8a8d9b;
+  opacity: 1;
+  display: block;
 }
 
 .new {
-    color: #fbfaaa;
-    position: absolute;
-    top: 20px;
-    left: 0;
-    right: 0;
-    display: block;
+  color: #fbfaaa;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: block;
 }
 
 .add {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    transform: translateY(38px);
-    pointer-events: none;
-    color: #d0d0db;
-    display: block;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(38px);
+  pointer-events: none;
+  color: #d0d0db;
+  display: block;
 }
 
 .Menu {
-    width: 15vw;
-    height: 150px;
-    margin-top: -10vh;
-    filter: drop-shadow(1px 1px 1px #4700b3);
-    button {
-        appearance: button;
-        background: white;
-        color: rgb(100, 100, 255);
-        border: none;
-        border-radius: 10px;
-        padding: 10px 20px;
-        font-size: 18px;
-        font-weight: 700;
-        width: 100%;
-        text-align: left;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+  width: 15vw;
+  height: 150px;
+  margin-top: -10vh;
+  filter: drop-shadow(1px 1px 1px #4700b3);
+  button {
+    appearance: button;
+    background: white;
+    color: rgb(100, 100, 255);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    background: white;
+  }
+  li {
+    display: block;
+    cursor: pointer;
+    height: 5vh;
+    font-size: 2vh;
+    border-radius: 10px;
+    transition: scale 0.5s;
+    color: rgb(100, 100, 255);
+    background-color: wheat;
+    &:hover {
+      scale: 1.05;
+      background-color: rgb(245, 208, 139);
     }
-    ul {
-        display: flex;
-        flex-direction: column;
-        gap: 3px;
-        background: white;
-    }
-    li {
-        display: block;
-        cursor: pointer;
-        height: 5vh;
-        font-size: 2vh;
-        border-radius: 10px;
-        transition: scale 0.5s;
-        color: rgb(100, 100, 255);
-        background-color: wheat;
-        &:hover {
-            scale: 1.05;
-            background-color: rgb(245, 208, 139);
-        }
-    }
-    ul,
-    li {
-        list-style: none;
-        margin: 0;
-        padding: 10px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-weight: 400;
-        font-style: normal;
-    }
+  }
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 }
 
 @mixin motionDiv {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    scale: 0.5;
-    background-color: #d1edff;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  scale: 0.5;
+  background-color: #d1edff;
 }
 
 .MotionCircle {
-    @include motionDiv;
-    border-radius: 50%;
+  @include motionDiv;
+  border-radius: 50%;
 }
 
 .MotionSquare {
-    @include motionDiv;
+  @include motionDiv;
 }
