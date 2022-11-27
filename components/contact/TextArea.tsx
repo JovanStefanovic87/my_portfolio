@@ -1,10 +1,20 @@
 import { useState, useEffect } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import {inputChangedHandler} from '../../helpers/universalFunctions'
+import { FormInput } from '../../interfaces/interfaces'
 
 import classes from './contact.module.scss';
 
-const TextArea = (props) => {
+interface Props {
+	formInput: FormInput;
+	name: string;
+	error: string;
+	value: string | number | readonly string[];
+	maxLength: number;
+	setFormInput: React.Dispatch<React.SetStateAction<{}>>;
+}
+
+const TextArea = (props:Props): JSX.Element => {
     const [placeholder, setPlaceholder] = useState('YOUR MESSAGE HERE')
     const inputClasses = {
         valid: classes.TextArea,
@@ -19,7 +29,6 @@ const TextArea = (props) => {
 
 	return (
 		<TextareaAutosize
-			type="textarea"
 			name={props.name}
 			value={props.value}
 			maxLength={props.maxLength}

@@ -32,7 +32,7 @@ interface Props {
   myData: ChartData
 }
 
-const BarChart = (props: Props) => {
+const BarChart = (props: Props): JSX.Element => {
   const [index, setIndex] = useState<number>(0)
   const data = {
     labels: props.myData?.labels.map((label) => {

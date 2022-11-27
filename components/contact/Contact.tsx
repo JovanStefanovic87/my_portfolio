@@ -9,7 +9,7 @@ import { ContactData, MessageStatus, IsSent, FormInput } from '../../interfaces/
 
 import classes from './contact.module.scss'
 
-const Contact = () => {
+const Contact = (): JSX.Element => {
   const isComponentLoad = useRef<boolean>(true)
   const [formInput, setFormInput] = useState<FormInput>(initState)
   const [message, setMessage] = useState<ContactData>(undefined)

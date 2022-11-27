@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, MutableRefObject } from "react";
 
-const useOnScreen = (ref, rootMargin = '0px') => {
+const useOnScreen = (ref: MutableRefObject<any>, rootMargin: string = '0px') => {
     const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {

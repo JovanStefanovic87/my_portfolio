@@ -1,5 +1,4 @@
 import { useRef, useEffect } from 'react'
-import { Dispatch, SetStateAction } from 'react'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import Image from 'next/image'
 import Moon from './../../assets/img/moon.png'
@@ -24,18 +23,10 @@ import Lake from './Lake'
 import WaterDeeper from './WaterDeeper'
 import ParallaxButton from '../buttons/ParallaxButton'
 import Contact from '../contact/Contact'
+import {ParallaxDesktop} from '../../interfaces/interfaces'
 
-interface Props {
-  setParalaxLayer: Dispatch<SetStateAction<number>>
-  sideBarScrollPosition: number
-  isMobile: boolean
-}
 
-const ParallaxDesktop: React.FC<Props> = ({
-  setParalaxLayer,
-  sideBarScrollPosition,
-  isMobile,
-}): JSX.Element => {
+const ParallaxDesktop = (props: ParallaxDesktop): JSX.Element => {
   const parallax = useRef<any>(null)
   const buttonStartOffset = (n: number) => n - 0.05
   const buttonStartOffsetTop = (n: number) => n - 0.95
@@ -44,8 +35,8 @@ const ParallaxDesktop: React.FC<Props> = ({
   }
 
   useEffect(() => {
-    parallax.current.scrollTo(sideBarScrollPosition)
-  }, [sideBarScrollPosition])
+    parallax.current.scrollTo(props.sideBarScrollPosition)
+  }, [props.sideBarScrollPosition])
   return (
     <div className={classes.ParallaxContainer}>
       <Parallax
@@ -105,7 +96,7 @@ const ParallaxDesktop: React.FC<Props> = ({
           />
         </ParallaxLayer>
         <ParallaxLayer offset={0.95} className={classes.flexBoxButton}>
-          <ParallaxButton onClick={() => setParalaxLayer(1)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(1)} />
         </ParallaxLayer>
 
         {/* 1 */}
@@ -129,14 +120,14 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={rotateButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(0)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(0)} />
         </ParallaxLayer>
         <ParallaxLayer
           offset={2}
           sticky={{ start: buttonStartOffset(2), end: 1 }}
           className={classes.flexBoxButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(2)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(2)} />
         </ParallaxLayer>
 
         {/* 2 */}
@@ -165,14 +156,14 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={rotateButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(1)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(1)} />
         </ParallaxLayer>
         <ParallaxLayer
           offset={3}
           sticky={{ start: buttonStartOffset(3), end: 2 }}
           className={classes.flexBoxButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(3)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(3)} />
         </ParallaxLayer>
 
         {/* 3 */}
@@ -196,14 +187,14 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={rotateButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(2)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(2)} />
         </ParallaxLayer>
         <ParallaxLayer
           offset={4}
           sticky={{ start: buttonStartOffset(4), end: 3 }}
           className={classes.flexBoxButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(4)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(4)} />
         </ParallaxLayer>
 
         {/* 4*/}
@@ -213,7 +204,7 @@ const ParallaxDesktop: React.FC<Props> = ({
           sticky={{ start: 4, end: 4 }}
           className={classes.flexBox}
         >
-          <About isMobile={isMobile} />
+          <About isMobile={props.isMobile} />
         </ParallaxLayer>
         <ParallaxLayer
           offset={5}
@@ -221,14 +212,14 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={rotateButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(3)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(3)} />
         </ParallaxLayer>
         <ParallaxLayer
           offset={5}
           sticky={{ start: buttonStartOffset(5), end: 4 }}
           className={classes.flexBoxButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(5)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(5)} />
         </ParallaxLayer>
 
         {/* 5 */}
@@ -265,7 +256,7 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={{ zIndex: 4, rotate: '180deg' }}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(4)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(4)} />
         </ParallaxLayer>
         <ParallaxLayer
           offset={6}
@@ -273,7 +264,7 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={{ zIndex: 4 }}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(7)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(7)} />
         </ParallaxLayer>
 
         {/* 6/7 */}
@@ -300,7 +291,7 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={{ zIndex: 5, rotate: '180deg' }}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(5)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(5)} />
         </ParallaxLayer>
         <ParallaxLayer
           offset={8}
@@ -308,7 +299,7 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={{ zIndex: 5 }}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(8)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(8)} />
         </ParallaxLayer>
 
         {/* 8 */}
@@ -326,7 +317,7 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={{ zIndex: 5, rotate: '180deg' }}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(7)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(7)} />
         </ParallaxLayer>
         <ParallaxLayer
           offset={9}
@@ -334,7 +325,7 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={{ zIndex: 2 }}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(9)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(9)} />
         </ParallaxLayer>
 
         {/* 9 */}
@@ -360,14 +351,14 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={rotateButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(8)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(8)} />
         </ParallaxLayer>
         <ParallaxLayer
           offset={10}
           sticky={{ start: buttonStartOffset(10), end: 9 }}
           className={classes.flexBoxButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(10)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(10)} />
         </ParallaxLayer>
 
         {/* 10 */}
@@ -389,14 +380,14 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={{ zIndex: 5, rotate: '180deg' }}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(9)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(9)} />
         </ParallaxLayer>
         <ParallaxLayer
           offset={11}
           sticky={{ start: buttonStartOffset(11), end: 10 }}
           className={classes.flexBoxButton}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(11)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(11)} />
         </ParallaxLayer>
 
         {/* 11 */}
@@ -424,7 +415,7 @@ const ParallaxDesktop: React.FC<Props> = ({
           className={classes.flexBoxButton}
           style={{ zIndex: 5, rotate: '180deg' }}
         >
-          <ParallaxButton onClick={() => setParalaxLayer(10)} />
+          <ParallaxButton onClick={() => props.setParalaxLayer(10)} />
         </ParallaxLayer>
       </Parallax>
     </div>

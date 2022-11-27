@@ -1,6 +1,11 @@
 import classes from './charts.module.scss'
 
-const ChangePreviewBtn = (props) => {
+interface Props {
+    array: number[]
+    setIndex: React.Dispatch<React.SetStateAction<Number>>
+}
+
+const ChangePreviewBtn = (props: Props): JSX.Element => {
     return(
         <div className={classes.ChangePreviewButton}>
             {

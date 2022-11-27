@@ -110,3 +110,9 @@ export interface InputProps {
     placeholder?: string,
     error?: string,
 }
+
+export interface ParallaxDesktop {
+    setParalaxLayer: Dispatch<SetStateAction<number>>
+    sideBarScrollPosition: number
+    isMobile: boolean
+}

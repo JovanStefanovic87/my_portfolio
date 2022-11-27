@@ -3,7 +3,7 @@ import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
 import type { Engine } from 'tsparticles-engine'
 
-const ParticleAnimation = () => {
+const ParticleAnimation = (): JSX.Element => {
   const particlesInit = useCallback(async (engine: Engine): Promise<void> => {
     await loadFull(engine)
   }, [])

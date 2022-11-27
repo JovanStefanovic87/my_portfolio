@@ -1,7 +1,7 @@
 import classes from './spinners.module.scss'
 import { createInners } from '../../helpers/universalFunctions'
 
-const SpiralSpinner = () => {
+const SpiralSpinner = (): JSX.Element => {
   const divArray = []
   createInners(70, divArray)
 
