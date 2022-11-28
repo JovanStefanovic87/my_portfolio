@@ -2,6 +2,7 @@
 
 .ContactContainer {
     width: 50vw;
+    height: auto;
     margin: 100px auto 0 auto;
     legend {
         color: white;
@@ -9,7 +10,12 @@
     fieldset {
         display: flex;
         flex-direction: column;
-        height: 60vh;
+        height: auto;
+        padding-top: 50px;
+    }
+    @media (pointer:none), (pointer:coarse) {
+        margin-top: -30vh;
+        width: 90vw;
     }
 }
 

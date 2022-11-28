@@ -1,194 +1,182 @@
 @use '../../styles/variables.module.scss' as v;
 
 @function generate-random-stars($screen-width, $color, $density) {
+  $h-shadow: random($screen-width);
+  $v-shadow: random($screen-width);
+
+  $stars: '#{$h-shadow}px #{$v-shadow}px #{$color}';
+  @for $i from 2 through $density {
     $h-shadow: random($screen-width);
     $v-shadow: random($screen-width);
 
-    $stars: '#{$h-shadow}px #{$v-shadow}px #{$color}';
-    @for $i from 2 through $density {
-        $h-shadow: random($screen-width);
-        $v-shadow: random($screen-width);
-
-        $stars: '#{$stars}, #{$h-shadow}px #{$v-shadow}px #{$color}';
-    }
-    @return unquote($stars);
+    $stars: '#{$stars}, #{$h-shadow}px #{$v-shadow}px #{$color}';
+  }
+  @return unquote($stars);
 }
 
-@mixin stars-content(
-    $screen-width,
-    $color,
-    $density,
-    $speed,
-    $delay,
-    $starDimensions
-) {
-    width: $starDimensions;
-    height: $starDimensions;
-    border-radius: 50%;
-    opacity: 1;
-    box-shadow: generate-random-stars($screen-width, $color, $density);
-    @media screen and (min-width: v.$medium) {
-        opacity: 0;
-        animation-name: glowing-stars;
-        animation-duration: $speed + s;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-        animation-timing-function: linear;
-        animation-delay: $delay + s;
-    }
+@mixin stars-content($screen-width, $color, $density, $speed, $delay, $starDimensions) {
+  width: $starDimensions;
+  height: $starDimensions;
+  border-radius: 50%;
+  opacity: 1;
+  box-shadow: generate-random-stars($screen-width, $color, $density);
+  @media screen and (min-width: v.$medium) {
+    opacity: 0;
+    animation-name: glowing-stars;
+    animation-duration: $speed + s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-delay: $delay + s;
+  }
 }
 
 //Change colors for multi-colors star groups
 
 .StarsGroup1 {
-    @include stars-content(1800, #fff, 200, 1, 0.5, 3px);
+  @include stars-content(1800, #fff, 200, 1, 0.1, 3px);
 }
 
 .StarsGroup2 {
-    @include stars-content(1800, #fff, 200, 1, 0.1, 2px);
+  @include stars-content(1800, #fff, 200, 1, 0.2, 2px);
 }
 
 .StarsGroup3 {
-    @include stars-content(1800, #fff, 200, 1, 0.2, 1px);
+  @include stars-content(1800, #fff, 200, 1, 0.3, 1px);
 }
 
 .StarsGroup4 {
-    @include stars-content(1800, #fff, 200, 1, 0.3, 2px);
+  @include stars-content(1800, #fff, 200, 1, 0.4, 2px);
 }
 
 .StarsGroup5 {
-    @include stars-content(1800, #fff, 200, 1, 0.4, 1px);
+  @include stars-content(1800, #fff, 200, 1, 0.5, 1px);
 }
 
 .StarsGroup6 {
-    @include stars-content(1800, #fff, 200, 1, 0.5, 1px);
+  @include stars-content(1800, #fff, 200, 1, 0.5, 1px);
 }
 
 @keyframes glowing-stars {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 $shooting-time: 6000ms;
 
 .shooting_star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  rotate: 22deg;
+  height: 2px;
+  background: linear-gradient(-45deg, rgba(95, 145, 255, 1), rgba(0, 0, 255, 0));
+  border-radius: 50%;
+  filter: drop-shadow(0 0 6px rgba(105, 155, 255, 1));
+  animation: tail $shooting-time ease-in-out forwards, shooting $shooting-time ease-in-out forwards;
+
+  &::before {
+    content: '';
     position: absolute;
-    left: 50%;
-    top: 50%;
-    rotate: 22deg;
+    top: calc(50% - 1px);
+    right: 0;
     height: 2px;
     background: linear-gradient(
-        -45deg,
-        rgba(95, 145, 255, 1),
-        rgba(0, 0, 255, 0)
+      -45deg,
+      rgba(0, 0, 255, 0),
+      rgba(95, 145, 255, 1),
+      rgba(0, 0, 255, 0)
     );
-    border-radius: 50%;
-    filter: drop-shadow(0 0 6px rgba(105, 155, 255, 1));
-    animation: tail $shooting-time ease-in-out forwards,
-        shooting $shooting-time ease-in-out forwards;
+    transform: translateX(50%) rotateZ(45deg);
+    border-radius: 100%;
+    animation: shining $shooting-time ease-in-out forwards;
+  }
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: calc(50% - 1px);
-        right: 0;
-        height: 2px;
-        background: linear-gradient(
-            -45deg,
-            rgba(0, 0, 255, 0),
-            rgba(95, 145, 255, 1),
-            rgba(0, 0, 255, 0)
-        );
-        transform: translateX(50%) rotateZ(45deg);
-        border-radius: 100%;
-        animation: shining $shooting-time ease-in-out forwards;
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      -45deg,
+      rgba(0, 0, 255, 0),
+      rgba(95, 145, 255, 1),
+      rgba(0, 0, 255, 0)
+    );
+    transform: translateX(50%) rotateZ(45deg);
+    border-radius: 100%;
+    animation: shining $shooting-time ease-in-out forwards;
+    transform: translateX(50%) rotateZ(-45deg);
+  }
+
+  @for $i from 1 through 20 {
+    &:nth-child(#{$i}) {
+      $delay: 4s;
+      top: calc(50% - #{random(400) - 200px});
+      left: calc(50% - #{random(300) + 0px});
+      animation-delay: $delay;
+      // opacity: random(50) / 100 + 0.5;
+
+      &::before,
+      &::after {
+        animation-delay: $delay;
+      }
     }
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: calc(50% - 1px);
-        right: 0;
-        height: 2px;
-        background: linear-gradient(
-            -45deg,
-            rgba(0, 0, 255, 0),
-            rgba(95, 145, 255, 1),
-            rgba(0, 0, 255, 0)
-        );
-        transform: translateX(50%) rotateZ(45deg);
-        border-radius: 100%;
-        animation: shining $shooting-time ease-in-out forwards;
-        transform: translateX(50%) rotateZ(-45deg);
-    }
-
-    @for $i from 1 through 20 {
-        &:nth-child(#{$i}) {
-            $delay: 4s;
-            top: calc(50% - #{random(400) - 200px});
-            left: calc(50% - #{random(300) + 0px});
-            animation-delay: $delay;
-            // opacity: random(50) / 100 + 0.5;
-
-            &::before,
-            &::after {
-                animation-delay: $delay;
-            }
-        }
-    }
+  }
 }
 
 @keyframes tail {
-    0% {
-        width: 0;
-    }
+  0% {
+    width: 0;
+  }
 
-    30% {
-        width: 100px;
-    }
+  30% {
+    width: 100px;
+  }
 
-    100% {
-        width: 0;
-    }
+  100% {
+    width: 0;
+  }
 }
 
 @keyframes shining {
-    0% {
-        width: 0;
-    }
+  0% {
+    width: 0;
+  }
 
-    50% {
-        width: 30px;
-    }
+  50% {
+    width: 30px;
+  }
 
-    100% {
-        width: 0;
-    }
+  100% {
+    width: 0;
+  }
 }
 
 @keyframes shooting {
-    0% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(0);
+  }
 
-    100% {
-        transform: translateX(300px);
-    }
+  100% {
+    transform: translateX(300px);
+  }
 }
 
 @keyframes sky {
-    0% {
-        transform: rotate(90deg);
-    }
+  0% {
+    transform: rotate(90deg);
+  }
 
-    100% {
-        transform: rotate(45 + 360deg);
-    }
+  100% {
+    transform: rotate(45 + 360deg);
+  }
 }
