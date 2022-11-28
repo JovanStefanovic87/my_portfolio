@@ -1,3 +1,4 @@
+import React from 'react'
 import classes from './charts.module.scss'
 
 interface Props {

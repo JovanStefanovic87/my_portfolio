@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import {inputChangedHandler} from '../../helpers/universalFunctions'
 import { FormInput } from '../../interfaces/interfaces'

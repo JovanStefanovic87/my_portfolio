@@ -1,3 +1,4 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 import GalleryWrapper from '../containers/GalleryWrapper'
 import AnimationWrapper from '../containers/AnimationWrapper'

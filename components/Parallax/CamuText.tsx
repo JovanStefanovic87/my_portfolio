@@ -1,3 +1,4 @@
+import React from 'react'
 import classes from './parallax.module.scss'
 
 const CamuText = (): JSX.Element => {
@@ -15,7 +16,7 @@ const CamuText = (): JSX.Element => {
     <div className={classes.CamuText}>
       <div>
         {animText.map((el, i) => {
-          let char = el === ' ' ? '\u00A0' : el
+          const char = el === ' ' ? <span style={{width: '0.5em'}}></span> : el
           return <span key={i}>{char}</span>
         })}
       </div>

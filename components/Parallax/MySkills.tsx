@@ -32,7 +32,7 @@ import { DiScrum } from 'react-icons/di'
 
 import classes from './parallax.module.scss'
 
-const MySkills = (): JSX.Element => {
+const MySkills = (props: any ): JSX.Element => {
   const [animate, setAnimate] = useState('')
   const isComponentLoad = useRef(true)
   const ref = useRef(null)
@@ -43,12 +43,12 @@ const MySkills = (): JSX.Element => {
       isComponentLoad.current = false
       return
     }
-    setAnimate(isvisible ? classes.a : '')
+    setAnimate(isvisible ? classes.MySkillsAnimate : '')
   }, [isComponentLoad.current, isvisible])
 
   return (
     <div>
-      <div className={[classes.MySkills, animate].join(' ')} ref={ref}>
+      <div className={[props.classes, animate].join(' ')} ref={ref}>
         <div>
           <FaHtml5 className={classes.SkillIcon} />
           <div>Html5</div>

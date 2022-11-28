@@ -22,6 +22,10 @@ export interface SliderNavParams {
         zIndex: number,
         animate: {}
     },
+    contact: {
+        zIndex: number,
+        animate: {},
+    },
 }
 export type IsSent = boolean
 

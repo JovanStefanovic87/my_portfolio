@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
 import authorImg from '../../assets/img/author.png'
 import githubImg from '../../assets/img/github.png'

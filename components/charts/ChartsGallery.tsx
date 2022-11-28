@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect, useRef } from 'react'
+import React,  { useState, useEffect, useRef } from 'react'
 import BarChart from './BarChart'
 import DoughnutChart from './DoughnutChart'
 import PieChart from './PieChart'

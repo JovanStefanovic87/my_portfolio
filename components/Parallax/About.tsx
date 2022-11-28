@@ -1,3 +1,4 @@
+import React from 'react'
 import classes from './parallax.module.scss'
 
 interface Props {

@@ -1,5 +1,5 @@
+import React, { useState } from 'react'
 import { ShapeBenderTransition } from '../../interfaces/interfaces'
-import { useState } from 'react'
 import { motion, MotionConfig } from 'framer-motion'
 
 import classes from './animation.module.scss'

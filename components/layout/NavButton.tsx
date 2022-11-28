@@ -1,3 +1,4 @@
+import React from 'react'
 import classes from './layout.module.scss'
 
 interface Props {

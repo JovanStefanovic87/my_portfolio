@@ -1,3 +1,4 @@
+import React from 'react'
 import classes from './buttons.module.scss'
 
 const MechanicalButton = (): JSX.Element => {

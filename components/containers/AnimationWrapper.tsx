@@ -1,3 +1,4 @@
+import React from 'react'
 import classes from '../animations/animation.module.scss'
 
 const AnimationWrapper = ({ children }): JSX.Element => {

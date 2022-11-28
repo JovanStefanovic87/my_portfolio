@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Layout from '../components/layout/Layout'
 import Sidebar from '../components/layout/Sidebar'
-import ParallaxMob from '../components/Parallax/ParallaxMob'
-import ParallaxDesktop from '../components/Parallax/ParallaxDesktop'
+import ParallaxMob from '../components/parallax/ParallaxMob'
+import ParallaxDesktop from '../components/parallax/ParallaxDesktop'
 import { parallaxData } from '../interfaces/interfaces'
 
 const Home = ({ isMobile }): JSX.Element => {

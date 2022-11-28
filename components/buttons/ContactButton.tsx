@@ -1,3 +1,4 @@
+import React from 'react'
 import { MessageStatus } from '../../interfaces/interfaces'
 
 import classes from './buttons.module.scss'

@@ -1,3 +1,4 @@
+import React from 'react'
 import { createInners } from '../../helpers/universalFunctions'
 
 import classes from './stars.module.scss'

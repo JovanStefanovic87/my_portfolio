@@ -89,7 +89,7 @@
       font-size: 5vmin;
     }
     p {
-      font-size: 1.5em;
+      font-size: 5vmin;
       color: rgba(255, 255, 255, 0.671);
       font-weight: 600;
       mix-blend-mode: difference;
@@ -338,8 +338,11 @@
   padding: 0 5vw;
   color: white;
   transform: translateX(-99.9%);
+  &:__mob{
+    background-color: red;
+  }
   @media screen and (max-width: v.$small) {
-    margin-top: -25vh;
+    margin-top: -10vh;
     gap: 4vmin;
   }
   & > div {
@@ -356,11 +359,11 @@
   }
 }
 
-.a {
-  animation: 1s a ease-in-out forwards 0.5s;
+.MySkillsAnimate {
+  animation: 1s MySkillsAnimated ease-in-out forwards 0.5s;
 }
 
-@keyframes a {
+@keyframes MySkillsAnimated {
   from {
     transform: translateX(-99.9%);
   }
@@ -471,6 +474,13 @@
 .AnimateFish {
   transform: scaleX(1.2) scaleY(1.2);
   animation: 60s fishAnimate linear alternate infinite;
+}
+
+.AnimateFishMob {
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  text-align: center;
 }
 
 @keyframes fishAnimate {

@@ -1,3 +1,4 @@
+import React from 'react'
 import classes from './spinners.module.scss'
 import { createInners } from '../../helpers/universalFunctions'
 

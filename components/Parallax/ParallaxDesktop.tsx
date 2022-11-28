@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import Image from 'next/image'
 import Moon from './../../assets/img/moon.png'
@@ -248,7 +248,7 @@ const ParallaxDesktop = (props: ParallaxDesktop): JSX.Element => {
           className={classes.flexBox}
           style={{ zIndex: 2 }}
         >
-          <MySkills />
+          <MySkills classes={classes.MySkills}/>
         </ParallaxLayer>
         <ParallaxLayer
           offset={6}

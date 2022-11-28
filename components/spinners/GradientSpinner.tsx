@@ -1,3 +1,4 @@
+import React from 'react'
 import classes from './spinners.module.scss'
 
 const Spinner3D = (): JSX.Element => {

@@ -1,3 +1,4 @@
+import React from 'react'
 import classes from './spinners.module.scss'
 
 const BackLightSpinner = (): JSX.Element => {

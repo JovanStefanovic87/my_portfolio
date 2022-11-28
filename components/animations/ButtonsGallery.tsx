@@ -1,3 +1,4 @@
+import React from 'react'
 import GalleryWrapper from '../containers/GalleryWrapper'
 import GalleryItemWrapper from '../containers/GalleryItemWrapper'
 import GlowingButton from '../buttons/GlowingButton'

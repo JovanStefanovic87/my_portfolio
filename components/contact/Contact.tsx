@@ -7,6 +7,7 @@ import TextArea from './TextArea'
 import ContactButton from '../buttons/ContactButton'
 import { ContactData, MessageStatus, IsSent, FormInput } from '../../interfaces/interfaces'
 
+import React from 'react'
 import classes from './contact.module.scss'
 
 const Contact = (): JSX.Element => {
