@@ -22,26 +22,32 @@ const ParallaxMob: React.FC<Props> = ({ isMobile }): JSX.Element => {
     wellcome: {
       zIndex: 100,
       animate: {},
+      opacity: 1,
     },
     about: {
       zIndex: 0,
       animate: {},
+      opacity: 0,
     },
     water: {
       zIndex: 0,
       animate: {},
+      opacity: 0,
     },
     skills: {
       zIndex: 0,
       animate: {},
+      opacity: 0,
     },
     particles: {
       zIndex: 0,
       animate: {},
+      opacity: 0,
     },
     contact: {
       zIndex: 0,
       animate: {},
+      opacity: 0,
     },
   })
 
@@ -71,8 +77,8 @@ const ParallaxMob: React.FC<Props> = ({ isMobile }): JSX.Element => {
               onClick={() =>
                 setAnimated({
                   ...animated,
-                  wellcome: { zIndex: -1, animate: variants.hide },
-                  about: { animate: variants.unHide, zIndex: 100 },
+                  wellcome: { zIndex: -1, animate: variants.hide, opacity:0 },
+                  about: { animate: variants.unHide, zIndex: 100, opacity: 1 },
                 })
               }
             />
@@ -91,8 +97,8 @@ const ParallaxMob: React.FC<Props> = ({ isMobile }): JSX.Element => {
               onClick={() =>
                 setAnimated({
                   ...animated,
-                  about: { zIndex: -1, animate: variants.hide },
-                  water: { animate: variants.centerY, zIndex: 100 },
+                  about: { zIndex: -1, animate: variants.hide, opacity: 0 },
+                  water: { animate: variants.centerY, zIndex: 100, opacity: 1 },
                 })
               }
             />
@@ -119,8 +125,8 @@ const ParallaxMob: React.FC<Props> = ({ isMobile }): JSX.Element => {
               onClick={() =>
                 setAnimated({
                   ...animated,
-                  water: { zIndex: -1, animate: variants.bottom },
-                  skills: { animate: variants.centerY, zIndex: 100 },
+                  water: { zIndex: -1, animate: variants.bottom, opacity: 0 },
+                  skills: { animate: variants.centerY, zIndex: 100, opacity: 1 },
                 })
               }
             />
@@ -141,8 +147,8 @@ const ParallaxMob: React.FC<Props> = ({ isMobile }): JSX.Element => {
               onClick={() =>
                 setAnimated({
                   ...animated,
-                  skills: { zIndex: -1, animate: variants.hide },
-                  contact: { animate: variants.centerY, zIndex: 100 },
+                  skills: { zIndex: -1, animate: variants.hide, opacity: 0 },
+                  contact: { animate: variants.centerY, zIndex: 100, opacity: 1 },
                 })
               }
             />
@@ -161,8 +167,8 @@ const ParallaxMob: React.FC<Props> = ({ isMobile }): JSX.Element => {
               onClick={() =>
                 setAnimated({
                   ...animated,
-                  contact: { zIndex: -1, animate: variants.hide },
-                  wellcome: { animate: variants.centerY, zIndex: 100 },
+                  contact: { zIndex: -1, animate: variants.hide, opacity: 0 },
+                  wellcome: { animate: variants.centerY, zIndex: 100, opacity: 1 },
                 })
               }
             />

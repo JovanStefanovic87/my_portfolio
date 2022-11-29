@@ -81,6 +81,7 @@
 .AboutMob {
   width: 100vw;
   height: 100vh;
+  padding: 10px;
   fieldset {
     padding: 0;
     border: 3px double;
@@ -91,11 +92,12 @@
     p {
       font-size: 5vmin;
       color: rgba(255, 255, 255, 0.671);
-      font-weight: 600;
+      font-weight: 300;
       mix-blend-mode: difference;
       box-shadow: none;
       border-radius: 20px;
       padding: 20px;
+      text-align: left;
     }
   }
 }
@@ -342,7 +344,7 @@
     background-color: red;
   }
   @media screen and (max-width: v.$small) {
-    margin-top: -10vh;
+    margin-top: -20vmin;
     gap: 4vmin;
   }
   & > div {
@@ -352,8 +354,8 @@
     align-items: center;
     div {
       font-size: 2vw;
-      @media screen and (max-width: v.$small) {
-        font-size: 6vmin;
+      @media (pointer: none),(pointer: coarse) {
+        font-size: 3vmax;
       }
     }
   }
@@ -387,7 +389,7 @@
   color: #d1edff;
   cursor: pointer;
   @media screen and (max-width: v.$small) {
-    font-size: 10vmin;
+    font-size: 3vmax;
   }
   &:hover {
     transform: scale(1.4) rotate(10deg);

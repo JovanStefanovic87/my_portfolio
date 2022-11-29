@@ -1,6 +1,6 @@
 module.exports = {
 	env: {
-		browser: true,
+		node: true,
 		es2021: true,
 	},
 	extends: [
@@ -15,5 +15,12 @@ module.exports = {
 		sourceType: 'module',
 	},
 	plugins: ['react', '@typescript-eslint'],
-	rules: {},
+	rules: {
+	"@typescript-eslint/ban-types": "off",
+	"@typescript-eslint/no-explicit-any": "off",
+	"react/no-unescaped-entities": "off",
+	"react/prop-types": "off",
+	"react/react-in-jsx-scope": "off",
+	"@typescript-eslint/no-unused-vars": "off"
+},
 }

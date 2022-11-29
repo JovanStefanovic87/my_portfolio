@@ -13,7 +13,7 @@ const About: React.FC<Props> = ({ isMobile }): JSX.Element => {
         <legend>WELCOME</legend>
         <p>
           My name is Jovan Stefanović, I'm passionate front-end developer based in Subotica
-          (Serbia). <br />
+          (Serbia). <br /><br />
           I am focused on creating interactive digital experiences on the web.
           <br />
           <br />I have 7 years experience with programming languages based on HTML, CSS and

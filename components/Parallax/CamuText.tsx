@@ -16,7 +16,7 @@ const CamuText = (): JSX.Element => {
     <div className={classes.CamuText}>
       <div>
         {animText.map((el, i) => {
-          const char = el === ' ' ? <span style={{width: '0.5em'}}></span> : el
+          const char = el === ' ' ? '\u00A0' : el
           return <span key={i}>{char}</span>
         })}
       </div>

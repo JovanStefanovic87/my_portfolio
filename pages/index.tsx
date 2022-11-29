@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Head from 'next/head'
 import Layout from '../components/layout/Layout'
 import Sidebar from '../components/layout/Sidebar'

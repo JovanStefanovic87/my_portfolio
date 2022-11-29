@@ -23,10 +23,10 @@ import Lake from './Lake'
 import WaterDeeper from './WaterDeeper'
 import ParallaxButton from '../buttons/ParallaxButton'
 import Contact from '../contact/Contact'
-import {ParallaxDesktop} from '../../interfaces/interfaces'
+import {ParallaxD} from '../../interfaces/interfaces'
 
 
-const ParallaxDesktop = (props: ParallaxDesktop): JSX.Element => {
+const ParallaxDesktop = (props: ParallaxD): JSX.Element => {
   const parallax = useRef<any>(null)
   const buttonStartOffset = (n: number) => n - 0.05
   const buttonStartOffsetTop = (n: number) => n - 0.95

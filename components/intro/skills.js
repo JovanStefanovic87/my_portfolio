@@ -1,0 +1,2 @@
+export const skills = ['HTML', 'CSS', 'JAVASCRIPT', 'REACT', 'NEXTJS', 'CHARTJS', 'NODEJS', 'SASS', 'STRAPI', 'POSTMAN', 'MONGODB', 'GIT', 'LINUX', 
+'NGINX', 'DNS', 'SSL', 'VSCODE', 'FIGMA', 'SLACK', 'ILLUSTRATOR', 'SCRUM', 'TRELLO', 'JIRA']

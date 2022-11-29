@@ -4,27 +4,33 @@ export type MessageStatus = 'send' | 'sending' | 'sent' | 'thanks' | 'noempty' |
 export interface SliderNavParams {
     wellcome: {
         zIndex: number,
-        animate: {}
+        animate: {},
+        opacity: number,
     },
     about: {
         zIndex: number,
-        animate: {}
+        animate: {},
+        opacity: number,
     },
     water: {
         zIndex: number,
-        animate: {}
+        animate: {},
+        opacity: number,
     },
     skills: {
         zIndex: number,
-        animate: {}
+        animate: {},
+        opacity: number,
     },
     particles: {
         zIndex: number,
-        animate: {}
+        animate: {},
+        opacity: number,
     },
     contact: {
         zIndex: number,
         animate: {},
+        opacity: number,
     },
 }
 export type IsSent = boolean
@@ -115,7 +121,7 @@ export interface InputProps {
     error?: string,
 }
 
-export interface ParallaxDesktop {
+export interface ParallaxD {
     setParalaxLayer: Dispatch<SetStateAction<number>>
     sideBarScrollPosition: number
     isMobile: boolean
